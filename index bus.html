@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>وصولات تذاكر سفر الحافلة</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="وصولات تذاكر سفر الحافلة">
+<meta property="og:description" content="أنشئ وصولات تذاكر الحافلة بترقيم تلقائي وتاريخ ومحطات التوقف، واطبعها جاهزة على ورق A4">
+<meta property="og:url" content="https://smwknjyb5-glitch.github.io/bus-tickets/">
+<meta property="og:image" content="https://smwknjyb5-glitch.github.io/bus-tickets/bus-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{color-scheme:light;--bg:#f4f1ea;--card:#fff;--ink:#1d2433;--mute:#6b7280;--acc:#c2410c;--line:#d6d3cb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#14161c;--card:#1e222b;--ink:#eceff4;--mute:#9aa3b2;--acc:#fb923c;--line:#3a4050}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#14161c;--card:#1e222b;--ink:#eceff4;--mute:#9aa3b2;--acc:#fb923c;--line:#3a4050}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+h1{font-size:1.4rem;margin:8px 0 16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:0;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+label{display:block;font-size:.85rem;color:var(--mute);margin-bottom:4px}
+input,select{width:100%;padding:9px;border:1px solid var(--line);border-radius:0;background:var(--bg);color:var(--ink);font:inherit}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+button{padding:10px 18px;border:0;border-radius:0;background:var(--acc);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+button.sec{background:transparent;color:var(--ink);border:1px solid var(--line)}
+#out{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:18px}
+.tk{background:#fff;color:#1d2433;border:2px solid #1d2433;border-radius:0;overflow:hidden;break-inside:avoid;display:flex;flex-direction:column}
+.tk .hd{background:#1d2433;color:#fff;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+.tk .no{color:#fdba74;font-size:1.05rem}
+.tk .bd{padding:10px 12px;display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;font-size:.9rem}
+.tk .bd b{display:block;font-size:.72rem;color:#6b7280;font-weight:400}
+.tk .route{grid-column:1/-1;text-align:center;font-size:1.1rem;font-weight:700;padding:4px 0;border-bottom:1px dashed #9ca3af}
+.tk .ft{border-top:2px dashed #9ca3af;padding:8px 12px;display:flex;justify-content:space-between;align-items:center}
+.tk .pr{font-size:1.1rem;font-weight:700}
+.bar{height:26px;width:120px;background:repeating-linear-gradient(90deg,#1d2433 0 2px,#fff 2px 4px,#1d2433 4px 5px,#fff 5px 8px)}
+.note{font-size:.72rem;color:#6b7280;text-align:center;padding:0 8px 8px}.tk .ft{justify-content:center}.blank{display:inline-block;min-width:70px;border-bottom:1px solid #1d2433;height:1em}.tk .stops{grid-column:1/-1;border-top:1px dashed #9ca3af;padding-top:3px}#info{flex-basis:100%;font-size:.88rem;color:var(--mute)}
+@page{size:A4;margin:8mm}@media print{body{background:#fff}.panel,h1,.noprint{display:none!important}.wrap{padding:0;max-width:none}#out{margin:0;grid-template-columns:repeat(2,1fr);gap:3mm;grid-auto-rows:calc((274mm - (var(--rows,5) - 1)*3mm)/var(--rows,5))}.tk{height:100%}.tk .hd{padding:4px 10px}.tk .bd{padding:5px 10px;gap:2px 8px;font-size:.78rem}.tk .bd b{font-size:.62rem}.tk .route{font-size:.95rem;padding:0 0 2px}.tk .ft{padding:4px 10px;margin-top:auto}.bar{height:18px}#out[data-pp="10"] .note{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🚌 وصولات تذاكر سفر الحافلة</h1>
+<div class="panel">
+<div class="grid">
+<div><label>اسم الشركة</label><input id="co" value="شركة النقل للمسافرين"></div>
+<div><label>من (مدينة الانطلاق)</label><input id="from" value="عنابة"></div>
+<div><label>إلى (الوجهة)</label><input id="to" value="الجزائر"></div>
+<div><label>تاريخ السفر</label><input id="date" type="date"></div>
+<div><label>ساعة الانطلاق (اختيارية)</label><input id="time" placeholder="مثال: 08:00 أو غير محدد"></div>
+<div style="grid-column:1/-1"><label>محطات التوقف (اختيارية)</label><input id="stops" placeholder="مثال: سطيف، برج بوعريريج، البويرة"></div>
+<div style="grid-column:1/-1"><label>السعر</label><input id="price" value="1200 دج" placeholder="مثال: 1200 دج أو 1500 دج ذهاب وإياب"></div>
+<div><label>رقم أول تذكرة</label><input id="start" type="number" min="1" value="1"></div>
+<div><label>عدد التذاكر</label><input id="count" type="number" min="1" max="200" value="6"></div>
+<div><label>رقم الحافلة</label><input id="bus" value="12"></div>
+<div><label>رقم أول مقعد</label><input id="seat" type="number" min="1" value="1"></div>
+<div><label>اسم المسافر (اختياري)</label><input id="pax" placeholder="يترك فارغًا"></div>
+<div><label>أصفار الترقيم</label><select id="pad"><option value="1">بدون (7)</option><option value="3" selected>3 خانات (007)</option><option value="5">5 خانات (00007)</option></select></div>
+<div><label>وصولات في صفحة A4</label><select id="pp"><option value="6">6 (2×3)</option><option value="8">8 (2×4)</option><option value="10" selected>10 (2×5)</option></select></div>
+</div>
+<div class="btns">
+<button onclick="gen()">إنشاء الوصولات</button>
+<button class="sec" onclick="fillPage()">ملء صفحة A4</button>
+<button class="sec" onclick="window.print()">🖨️ طباعة</button>
+<button class="sec" onclick="reset()">إعادة ضبط</button>
+<div id="info"></div>
+</div>
+</div>
+<div id="out"></div>
+</div>
+<script>
+var ids=["co","from","to","date","time","price","start","count","bus","seat","pax","pad","stops","pp"];
+function $(i){return document.getElementById(i)}
+function save(){try{var o={};ids.forEach(function(i){o[i]=$(i).value});localStorage.setItem("bt",JSON.stringify(o))}catch(e){}}
+function load(){try{var o=JSON.parse(localStorage.getItem("bt")||"null");if(o)ids.forEach(function(i){if(o[i]!==undefined)$(i).value=o[i]})}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function fmtDate(v){if(!v)return"—";var p=v.split("-");return p[2]+"/"+p[1]+"/"+p[0]}
+function gen(){
+ save();
+ var n=Math.min(200,Math.max(1,parseInt($("count").value)||1));
+ var s=parseInt($("start").value)||1,seat=parseInt($("seat").value)||1,pad=parseInt($("pad").value);
+ var h="";var pp=parseInt($("pp").value)||10;$("out").setAttribute("data-pp",pp);$("out").style.setProperty("--rows",pp/2);
+ for(var i=0;i<n;i++){
+  var num=String(s+i);while(num.length<pad)num="0"+num;
+  h+='<div class="tk"><div class="hd"><span>'+esc($("co").value)+'</span><span class="no">رقم '+num+'</span></div>'
+  +'<div class="bd"><div class="route">'+esc($("from").value)+' ⟵ '+esc($("to").value)+'</div>'
+  +'<div><b>تاريخ السفر</b>'+fmtDate($("date").value)+'</div>'
+  +'<div><b>ساعة الانطلاق</b>'+($("time").value?esc($("time").value):'<span class="blank"></span>')+'</div>'
+  +'<div><b>رقم الحافلة</b>'+esc($("bus").value||"—")+'</div>'
+  +'<div><b>رقم المقعد</b>'+(seat+i)+'</div>'
+  +($("pax").value?'<div style="grid-column:1/-1"><b>المسافر</b>'+esc($("pax").value)+'</div>':'')
+  +($("stops").value?'<div class="stops"><b>محطات التوقف</b>'+esc($("stops").value)+'</div>':'')
+  +'<div class="stops"><b>السعر</b><span class="pr">'+esc(/^\d+$/.test($("price").value.trim())?$("price").value.trim()+" دج":$("price").value)+'</span></div></div><div class="ft"><span class="bar"></span></div>'
+  +'<div class="note">التذكرة صالحة ليوم وساعة السفر المحددين فقط</div></div>';
+ }
+ $("out").innerHTML=h;info();
+}
+function info(){var pp=parseInt($("pp").value)||10,n=parseInt($("count").value)||1;$("info").textContent="تتسع صفحة A4 على "+pp+" وصولات (عمودان). عدد التذاكر الحالي "+n+" = "+Math.ceil(n/pp)+" صفحة.";}function fillPage(){$("count").value=parseInt($("pp").value)||10;gen()}function reset(){try{localStorage.removeItem("bt")}catch(e){}location.reload()}
+load();
+if(!$("date").value){$("date").value=new Date().toISOString().slice(0,10)}
+gen();
+ids.forEach(function(i){$(i).addEventListener("change",save)});$("pp").addEventListener("change",gen);$("count").addEventListener("input",info);
+</script>
+</body>
+</html>
